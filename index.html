@@ -9,16 +9,9 @@
 </head>
 <body>
 
-  <!-- ── AI Dealer Background ── -->
+  <!-- ── Dealer Background ── -->
   <div id="dealer-background"></div>
   <div id="background-overlay"></div>
-
-  <!-- ── Generation spinner (top-right, fixed) ── -->
-  <div id="dealer-spinner" class="hidden">
-    <div class="spinner-ring"></div>
-    Generating dealer…
-  </div>
-  <div id="dealer-status" class="hidden"></div>
 
   <!-- ── Main Menu ── -->
   <div id="menu-screen" class="screen">
@@ -54,8 +47,6 @@
 
       <div class="header-right">
         <span class="hud-item">Sets <strong id="sets">0 / 8</strong></span>
-        <!-- API key settings cog -->
-        <button id="btn-dealer-settings" title="Dealer background settings">⚙</button>
       </div>
     </header>
 
@@ -84,29 +75,6 @@
         <button id="btn-play-again" class="btn-primary">Play Again</button>
         <button id="btn-main-menu" class="btn-secondary">Main Menu</button>
       </div>
-    </div>
-  </div>
-
-  <!-- ── API Key Modal ── -->
-  <div id="apikey-modal" class="hidden">
-    <div class="apikey-box">
-      <h3>🎴 Dealer Background</h3>
-      <p id="apikey-modal-info">Get your free API key at fal.ai/dashboard</p>
-      <div class="apikey-input-row">
-        <input
-          id="apikey-input"
-          type="password"
-          placeholder="fal_key_…"
-          autocomplete="off"
-          spellcheck="false"
-        />
-        <button id="apikey-save">Save</button>
-      </div>
-      <button id="apikey-cancel">Skip for now</button>
-      <br>
-      <a class="apikey-get-link" href="https://fal.ai/dashboard/keys" target="_blank" rel="noopener">
-        → Get a free fal.ai API key
-      </a>
     </div>
   </div>
 

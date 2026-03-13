@@ -1,5 +1,5 @@
 /* ── backgroundDealer.css ─────────────────────────────────────────────────
-   Fullscreen AI-generated dealer background + overlay.
+   Fullscreen dealer background + overlay.
    All rules are scoped so they cannot affect card/game layout.
    ─────────────────────────────────────────────────────────────────────── */
 
@@ -23,7 +23,7 @@
       rgba(10,30,15,1)   100%);
 }
 
-/* Fade-in once the generated image is loaded */
+/* Fade-in once the image is loaded */
 #dealer-background.loaded {
   animation: bgFadeIn 0.8s ease forwards;
 }
@@ -37,7 +37,6 @@
   position: fixed;
   inset: 0;
   z-index: -1;
-  /* Gradient: heavier at top (header area), moderate in middle, heavy at very bottom */
   background:
     linear-gradient(
       to bottom,
@@ -48,43 +47,6 @@
     );
   pointer-events: none;
 }
-
-/* ── Generation spinner ── */
-#dealer-spinner {
-  position: fixed;
-  top: 14px;
-  right: 54px;          /* sits left of the ⚙ button */
-  z-index: 300;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.65);
-  pointer-events: none;
-}
-#dealer-spinner.hidden { display: none; }
-
-.spinner-ring {
-  width: 16px;
-  height: 16px;
-  border: 2px solid rgba(255,255,255,0.2);
-  border-top-color: rgba(255,255,255,0.75);
-  border-radius: 50%;
-  animation: spin 0.75s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-
-/* ── Status text (error / info) ── */
-#dealer-status {
-  position: fixed;
-  bottom: 60px;
-  right: 16px;
-  z-index: 300;
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.45);
-  pointer-events: none;
-}
-#dealer-status.hidden { display: none; }
 
 /* ── Dealer gender selector (in header) ── */
 .dealer-gender-group {
@@ -124,122 +86,3 @@
   border-color: transparent;
   font-weight: 600;
 }
-
-/* ── Settings cog button (right side of header) ── */
-#btn-dealer-settings {
-  background: rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.6);
-  border: 1px solid rgba(255,255,255,0.15);
-  width: 30px;
-  height: 30px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.95rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.12s, color 0.12s;
-  margin-left: 6px;
-}
-#btn-dealer-settings:hover {
-  background: rgba(255,255,255,0.2);
-  color: #fff;
-}
-
-/* ── API Key Modal ── */
-#apikey-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 2000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(4px);
-}
-#apikey-modal.hidden { display: none; }
-
-.apikey-box {
-  background: linear-gradient(145deg, #1a2e1a, #0f1f0f);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 16px;
-  padding: 2rem 2.2rem;
-  width: 380px;
-  max-width: 92vw;
-  box-shadow: 0 12px 50px rgba(0,0,0,0.7);
-  text-align: center;
-  color: #fff;
-}
-
-.apikey-box h3 {
-  font-size: 1.15rem;
-  margin-bottom: 0.35rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-}
-
-#apikey-modal-info {
-  font-size: 0.8rem;
-  opacity: 0.6;
-  margin-bottom: 1.2rem;
-  line-height: 1.45;
-}
-
-.apikey-input-row {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 0.85rem;
-}
-
-#apikey-input {
-  flex: 1;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.22);
-  border-radius: 8px;
-  padding: 0.5rem 0.75rem;
-  color: #fff;
-  font-size: 0.85rem;
-  outline: none;
-  font-family: monospace;
-  letter-spacing: 0.5px;
-  transition: border-color 0.15s;
-}
-#apikey-input:focus { border-color: rgba(245,197,24,0.7); }
-#apikey-input::placeholder { opacity: 0.35; }
-
-#apikey-save {
-  background: #f5c518;
-  color: #1a1a1a;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  font-weight: 700;
-  cursor: pointer;
-  font-size: 0.85rem;
-  transition: opacity 0.12s;
-  white-space: nowrap;
-}
-#apikey-save:hover { opacity: 0.88; }
-
-#apikey-cancel {
-  background: transparent;
-  color: rgba(255,255,255,0.45);
-  border: none;
-  font-size: 0.78rem;
-  cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-#apikey-cancel:hover { color: rgba(255,255,255,0.75); }
-
-.apikey-get-link {
-  display: inline-block;
-  margin-top: 0.5rem;
-  font-size: 0.76rem;
-  color: #f5c518;
-  opacity: 0.8;
-  text-decoration: none;
-}
-.apikey-get-link:hover { opacity: 1; }
