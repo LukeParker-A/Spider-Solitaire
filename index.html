@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spider Solitaire</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="backgroundDealer.css">
+</head>
+<body>
+
+  <!-- ── AI Dealer Background ── -->
+  <div id="dealer-background"></div>
+  <div id="background-overlay"></div>
+
+  <!-- ── Generation spinner (top-right, fixed) ── -->
+  <div id="dealer-spinner" class="hidden">
+    <div class="spinner-ring"></div>
+    Generating dealer…
+  </div>
+  <div id="dealer-status" class="hidden"></div>
+
+  <!-- ── Main Menu ── -->
+  <div id="menu-screen" class="screen">
+    <div class="menu-box">
+      <div class="menu-suits">♠ ♠ ♠ ♠</div>
+      <h1>Spider Solitaire</h1>
+      <p class="menu-sub">One Suit · Classic Mode</p>
+      <button id="btn-new-game" class="btn-primary">New Game</button>
+    </div>
+  </div>
+
+  <!-- ── Game Screen ── -->
+  <div id="game-screen" class="screen hidden">
+    <header id="game-header">
+      <div class="header-left">
+        <button id="btn-menu" class="btn-icon">Menu</button>
+        <button id="btn-undo" class="btn-icon">↩ Undo</button>
+        <button id="btn-restart" class="btn-icon">↺ Restart</button>
+
+        <!-- Dealer gender selector -->
+        <div class="dealer-gender-group">
+          <span class="dealer-gender-label">Dealer</span>
+          <button class="dealer-gender-btn btn-icon" data-gender="female">♀ Female</button>
+          <button class="dealer-gender-btn btn-icon" data-gender="male">♂ Male</button>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <span class="hud-item">Score <strong id="score">500</strong></span>
+        <span class="hud-sep">·</span>
+        <span class="hud-item">Moves <strong id="moves">0</strong></span>
+      </div>
+
+      <div class="header-right">
+        <span class="hud-item">Sets <strong id="sets">0 / 8</strong></span>
+        <!-- API key settings cog -->
+        <button id="btn-dealer-settings" title="Dealer background settings">⚙</button>
+      </div>
+    </header>
+
+    <div id="game-board">
+      <div id="top-row">
+        <div id="foundations-area"></div>
+        <div id="stock-area">
+          <div id="stock-pile"></div>
+          <div id="stock-hint">click to deal</div>
+        </div>
+      </div>
+      <div id="tableau-area"></div>
+    </div>
+  </div>
+
+  <!-- ── Victory Overlay ── -->
+  <div id="victory-overlay" class="overlay hidden">
+    <div class="victory-box">
+      <div class="victory-suits">♠ ♠ ♠ ♠ ♠ ♠ ♠ ♠</div>
+      <h2>You Win!</h2>
+      <div class="victory-stats">
+        <div class="stat"><span>Score</span><strong id="final-score">0</strong></div>
+        <div class="stat"><span>Moves</span><strong id="final-moves">0</strong></div>
+      </div>
+      <div class="victory-buttons">
+        <button id="btn-play-again" class="btn-primary">Play Again</button>
+        <button id="btn-main-menu" class="btn-secondary">Main Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── API Key Modal ── -->
+  <div id="apikey-modal" class="hidden">
+    <div class="apikey-box">
+      <h3>🎴 Dealer Background</h3>
+      <p id="apikey-modal-info">Get your free API key at fal.ai/dashboard</p>
+      <div class="apikey-input-row">
+        <input
+          id="apikey-input"
+          type="password"
+          placeholder="fal_key_…"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button id="apikey-save">Save</button>
+      </div>
+      <button id="apikey-cancel">Skip for now</button>
+      <br>
+      <a class="apikey-get-link" href="https://fal.ai/dashboard/keys" target="_blank" rel="noopener">
+        → Get a free fal.ai API key
+      </a>
+    </div>
+  </div>
+
+  <!-- ── Drag ghost ── -->
+  <div id="drag-ghost" class="hidden"></div>
+
+  <!-- ── Toast ── -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="game.js"></script>
+  <script src="backgroundDealer.js"></script>
+</body>
+</html>
